@@ -4,14 +4,14 @@
         <title>
 
         </title>
-        <base href="../random image gen/index.html">
+<!--         <base href="../random image gen/index.html"> -->
         <meta charset="utf-8">
         <style>
             div{
                 display: flex;
                 flex: 1;
                 justify-content: space-between;
-                width:900px;
+                width:90%;
                 height: 200px;
                 margin: 30px 20px;
                 background-color: black;
@@ -128,7 +128,7 @@
             }
             function setImg(dieImg){
               var dieValue = Math.floor(1 + Math.random()*6);
-              dieImg.setAttribute("src", "../dice" + dieValue + ".png")
+              dieImg.setAttribute("src", "dice" + dieValue + ".png")
               tally(dieValue);
             }
 
@@ -161,10 +161,10 @@
             <input type="number" id="rollcount" disabled value="0">
         </form>
         <div>
-            <img src="../black.jpg" id="image1" alt="dice">
-            <img src="../black.jpg" id="image2" alt="image2">
-            <img src="../black.jpg" id="image3" alt="image3">
-            <img src="../black.jpg" id="image4" alt="image4">
+            <img src="black.jpg" id="image1" alt="dice">
+            <img src="black.jpg" id="image2" alt="image2">
+            <img src="black.jpg" id="image3" alt="image3">
+            <img src="black.jpg" id="image4" alt="image4">
             
         </div>
         <table>
