@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+
+        </title>
+        <base href="../random image gen/index.html">
+        <meta charset="utf-8">
+        <style>
+            div{
+                display: flex;
+                flex: 1;
+                justify-content: space-between;
+                width:900px;
+                height: 200px;
+                margin: 30px 20px;
+                background-color: black;
+            }
+            img{
+                width: 200px;
+                height: 200px;
+            }
+            form{
+                display: flex;
+                justify-content: space-between;
+            }
+            input{
+                font-size: x-large;
+                font-weight: 700;
+                border-radius: 5px;
+                text-align: end;
+            }
+            #rollbtn:hover{
+                background-color: aquamarine;
+                
+
+            }
+            table{
+                margin-top: 30px;
+                border: black solid;
+                width: 90%;
+                border-collapse: collapse;
+            }
+            th{
+                background-color: rgb(0, 0, 0);
+                color: white;
+            }
+            td{
+
+            }
+            th, td{
+                border: dotted navy 1px;
+                text-align: center;
+               
+            }
+        </style>
+        <script>
+            var frequency1 = 0;
+            var frequency2 = 0;
+            var frequency3 = 0;
+            var frequency4 = 0;
+            var frequency5 = 0;
+            var frequency6 = 0;
+            var die1Image;
+            var die2Image;
+            var die3Image;
+            var die4Image;
+            var freq1;
+            var freq2;
+            var freq3;
+            var freq4;
+            var freq5;
+            var freq6;
+            var perc1;
+            var perc2;
+            var perc3;
+            var perc4;
+            var perc5;
+            var perc6;
+            var totalRoll = 0;
+            var freq_count = 0;
+            var display;
+          
+            function start(){
+                var btn = document.getElementById('rollbtn');
+                btn.addEventListener("click", diceRoller, false);
+                die1Image = document.getElementById("image1");
+                die2Image = document.getElementById("image2");
+                die3Image = document.getElementById("image3");
+                die4Image = document.getElementById("image4");
+                freq1 = document.getElementById('freq1');
+                freq2 = document.getElementById('freq2');
+                freq3 = document.getElementById('freq3');
+                freq4 = document.getElementById('freq4');
+                freq5 = document.getElementById('freq5');
+                freq6 = document.getElementById('freq6');
+                perc1 = document.getElementById('perc1');
+                perc2 = document.getElementById('perc2');
+                perc3 = document.getElementById('perc3');
+                perc4 = document.getElementById('perc4');
+                perc5 = document.getElementById('perc5');
+                perc6 = document.getElementById('perc6');
+              
+               
+                display = document.getElementById('rollcount')
+            }
+
+            function diceRoller(){
+               setImg(die1Image);
+               setImg(die2Image);
+                setImg(die3Image);
+                setImg(die4Image);
+               totalRoll++;
+               display.value = totalRoll;
+            }
+            function tally(face){
+                switch(face){
+                    case 1: frequency1++; break;
+                    case 2: frequency2++; break;
+                    case 3: frequency3++; break;
+                    case 4: frequency4++; break;
+                    case 5: frequency5++; break;
+                    case 6: frequency6++; break;
+                }
+              
+                updateTable();
+              
+            }
+            function setImg(dieImg){
+              var dieValue = Math.floor(1 + Math.random()*6);
+              dieImg.setAttribute("src", "../dice" + dieValue + ".png")
+              tally(dieValue);
+            }
+
+            function updateTable(){
+                freq_count = frequency1+ frequency2 + frequency3 + frequency4 + frequency5+frequency6;
+                //frequency
+              freq1.textContent = String(frequency1);
+              freq2.textContent = String(frequency2);
+              freq3.textContent = String(frequency3);
+              freq4.textContent = String(frequency4);
+              freq5.textContent = String(frequency5);
+              freq6.textContent = String(frequency6);
+              //percentage
+            
+                perc1.textContent = parseInt((frequency1 / freq_count) * 100);
+                perc2.textContent = parseInt((frequency2 / freq_count) * 100);
+                perc3.textContent = parseInt((frequency3 / freq_count) * 100);
+                perc4.textContent = parseInt((frequency4 / freq_count) * 100);
+                perc5.textContent = parseInt((frequency5 / freq_count) * 100);
+                perc6.textContent = parseInt((frequency6 / freq_count) * 100);
+
+            }
+            
+            window.addEventListener('load', start, false);
+        </script>
+    </head>
+    <body>
+        <form action="#">
+            <input type="button" id="rollbtn" value="Roll dice">
+            <input type="number" id="rollcount" disabled value="0">
+        </form>
+        <div>
+            <img src="../black.jpg" id="image1" alt="dice">
+            <img src="../black.jpg" id="image2" alt="image2">
+            <img src="../black.jpg" id="image3" alt="image3">
+            <img src="../black.jpg" id="image4" alt="image4">
+            
+        </div>
+        <table>
+            <caption>Frequncy distribution table</caption>
+            <tr>
+                <th>Die</th>
+                <th>Frequency</th>
+                <th>Relative Percentage</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td id="freq1">0</td>
+                <td id="perc1">0</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td id="freq2">0</td>
+                <td id="perc2">0</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td id="freq3">0</td>
+                <td id="perc3">0</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td id="freq4">0</td>
+                <td id="perc4">0</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td id="freq5">0</td>
+                <td id="perc5">0</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td id="freq6">0</td>
+                <td id="perc6">0</td>
+            </tr>
+        </table>
+        
+    </body>
+
+</html>
